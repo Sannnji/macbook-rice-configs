@@ -2,7 +2,7 @@ return {
 	{
 		'goolord/alpha-nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
-		config = function ()
+		config = function()
 			local alpha = require('alpha')
 			local dashboard = require('alpha.themes.dashboard')
 			local cursor_hide = require('utils.cursor-hide')
@@ -18,12 +18,12 @@ return {
 
 			dashboard.section.header.val = vim.split(logo, '\n')
 			dashboard.section.buttons.val = {
-				dashboard.button('f',		'󰱼  Find file',																		'<cmd>Telescope find_files<CR>'),
-				dashboard.button('w',		'󰱽  Find word',																		'<cmd>Telescope live_grep<CR>'),
-				dashboard.button('e',		'󰙅  File explorer',																'<cmd>Neotree toggle<CR>'),
-				dashboard.button('r',		'󰋚  Recently opened files',												'<cmd>Telescope oldfiles<CR>'),
-				dashboard.button('b',		'󰃀  Jump to bookmarks (unimplemented)',						'<cmd>Telescope marks<CR>'),
-				dashboard.button('q',		'󰅚  Quit',																				'<cmd>qa<CR>'),
+				dashboard.button('f', '󰱼  Find file', '<cmd>Telescope find_files<CR>'),
+				dashboard.button('w', '󰱽  Find word', '<cmd>Telescope live_grep<CR>'),
+				dashboard.button('e', '󰙅  File explorer', '<cmd>Neotree toggle<CR>'),
+				dashboard.button('r', '󰋚  Recently opened files', '<cmd>Telescope oldfiles<CR>'),
+				dashboard.button('b', '󰃀  Jump to bookmarks (unimplemented)', '<cmd>Telescope marks<CR>'),
+				dashboard.button('q', '󰅚  Quit', '<cmd>qa<CR>'),
 			}
 			-- dashboard.section.footer.val = 'hello world!'
 
@@ -56,7 +56,7 @@ return {
 			dashboard.section.footer.opts.hl = 'AlphaFooter'
 
 			-- Hide cursor on the Alpha dashboard
-			dashboard.config.opts.setup = function ()
+			dashboard.config.opts.setup = function()
 				-- alpha-nvim calls opts.setup() every time the dashboard is (re)opened, so
 				-- re-create this augroup each time rather than appending autocmds forever.
 				local group = vim.api.nvim_create_augroup('AlphaCursorHide', { clear = true })
@@ -67,7 +67,8 @@ return {
 					desc = 'hide cursor for alpha',
 					callback = cursor_hide.hide,
 				})
-				vim.api.nvim_create_autocmd('BufUnload', {
+
+				vim.api.nvim_create_autocmd('BufLeave', {
 					group = group,
 					buffer = 0,
 					desc = 'show cursor after alpha',
@@ -80,5 +81,5 @@ return {
 			-- Disable folding on alpha buffer
 			vim.cmd([[ autocmd FileType alpha setlocal nofoldenable ]])
 		end,
-  },
+	},
 }

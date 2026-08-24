@@ -17,3 +17,6 @@ vim.opt.cursorlineopt = 'number'
 vim.api.nvim_set_hl(0, 'LineNr', { fg = '#6C7086' })
 -- font color for current line number
 vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = '#CBA6F7', bold = true })
+
+-- update code diagnostics on insert
+vim.diagnostic.config({ update_in_insert = true })

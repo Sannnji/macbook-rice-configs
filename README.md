@@ -37,6 +37,7 @@
 - Notify
 - Render-Markdown
 - Telescope with RipGrep
+- Telescope-UI-Select
 - Toggle-Term
 - Treesitter
 - Typescript Tools
